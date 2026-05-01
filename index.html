@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stitch & Grace – Invoice</title>
+  <title>Akorfa Stitch Co. – Invoice</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --rose:    #c9a49a;
-      --blush:   #f2e4df;
-      --cream:   #fdf8f5;
-      --linen:   #ede3db;
-      --bark:    #7a5c52;
-      --ink:     #3b2a25;
-      --gold:    #c4a882;
-      --soft:    #e8d5cc;
+      --rose:  #c9a49a;
+      --blush: #f2e4df;
+      --cream: #fdf8f5;
+      --linen: #ede3db;
+      --bark:  #7a5c52;
+      --ink:   #3b2a25;
+      --gold:  #c4a882;
+      --soft:  #e8d5cc;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,68 +33,58 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 32px;
-      gap: 12px;
+      padding: 12px 20px;
+      gap: 10px;
       flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     .topbar-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       font-weight: 300;
       letter-spacing: 0.08em;
       opacity: 0.92;
     }
-    .topbar-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .topbar-actions { display: flex; gap: 8px; }
 
-    /* ── Buttons ── */
     .btn {
       font-family: 'Jost', sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 9px 20px;
+      padding: 8px 16px;
       border-radius: 3px;
       border: none;
       cursor: pointer;
       transition: all 0.2s;
+      white-space: nowrap;
     }
-    .btn-ghost {
-      background: transparent;
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.45);
-    }
+    .btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.45); }
     .btn-ghost:hover { background: rgba(255,255,255,0.12); }
-    .btn-primary {
-      background: var(--rose);
-      color: #fff;
-    }
+    .btn-primary { background: var(--rose); color: #fff; }
     .btn-primary:hover { background: #b8908a; }
-    .btn-light {
-      background: var(--blush);
-      color: var(--bark);
-    }
-    .btn-light:hover { background: var(--soft); }
 
-    /* ── Page wrapper ── */
-    .page { max-width: 860px; margin: 40px auto 60px; padding: 0 20px; }
+    /* ── Page ── */
+    .page { max-width: 860px; margin: 24px auto 60px; padding: 0 12px; }
 
-    /* ── Invoice card ── */
     .card {
       background: #fff;
-      border-radius: 6px;
+      border-radius: 8px;
       box-shadow: 0 4px 32px rgba(122,92,82,0.10);
       overflow: hidden;
     }
 
-    /* ── Header band ── */
+    /* ── Header ── */
     .card-header {
       background: var(--blush);
-      padding: 40px 48px 32px;
+      padding: 28px 24px 22px;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 24px;
+      gap: 20px;
       flex-wrap: wrap;
       border-bottom: 1.5px solid var(--linen);
       position: relative;
@@ -107,34 +97,34 @@
       background: linear-gradient(90deg, var(--rose), var(--gold), var(--rose));
     }
 
-    .brand { display: flex; align-items: center; gap: 18px; }
+    .brand { display: flex; align-items: center; gap: 14px; }
     .brand-icon {
-      width: 56px; height: 56px;
+      width: 48px; height: 48px;
       background: var(--rose);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       flex-shrink: 0;
     }
     .brand-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
+      font-size: 1.75rem;
       font-weight: 400;
       color: var(--bark);
       line-height: 1.15;
     }
     .brand-tagline {
-      font-size: 0.72rem;
+      font-size: 0.65rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--rose);
       margin-top: 2px;
     }
 
-    .invoice-meta { text-align: right; }
+    .invoice-meta { text-align: right; flex-shrink: 0; }
     .invoice-label {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 300;
       font-style: italic;
       color: var(--rose);
@@ -143,99 +133,98 @@
     .meta-grid {
       display: grid;
       grid-template-columns: auto auto;
-      gap: 4px 16px;
-      margin-top: 10px;
-      text-align: right;
+      gap: 5px 12px;
+      margin-top: 8px;
+      align-items: center;
     }
     .meta-key {
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--rose);
       text-align: right;
     }
     .meta-val input {
       font-family: 'Jost', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--ink);
       border: none;
       border-bottom: 1px dashed var(--linen);
       background: transparent;
       text-align: right;
-      width: 130px;
-      padding: 1px 2px;
+      width: 120px;
+      padding: 2px;
       outline: none;
     }
     .meta-val input:focus { border-bottom-color: var(--rose); }
 
     /* ── Body ── */
-    .card-body { padding: 40px 48px; }
+    .card-body { padding: 24px; }
 
     /* ── Parties ── */
     .parties {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      margin-bottom: 36px;
+      gap: 24px;
+      margin-bottom: 28px;
     }
-    @media (max-width: 580px) { .parties { grid-template-columns: 1fr; } }
 
     .party-label {
-      font-size: 0.68rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 8px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .party-label::after { content: ''; flex: 1; height: 1px; background: var(--linen); }
+
+    .editable-line { margin-bottom: 5px; }
+    .editable-line input {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.85rem;
+      color: var(--ink);
+      border: none;
+      border-bottom: 1px dashed var(--linen);
+      background: transparent;
+      width: 100%;
+      padding: 4px 2px;
+      outline: none;
+    }
+    .editable-line input:focus { border-bottom-color: var(--rose); }
+    .editable-line input::placeholder { color: #cbb8b3; }
+
+    .section-label {
+      font-size: 0.65rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--rose);
       margin-bottom: 10px;
       display: flex; align-items: center; gap: 8px;
     }
-    .party-label::after { content: ''; flex: 1; height: 1px; background: var(--linen); }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--linen); }
 
-    .editable-line {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 4px;
-    }
-    .editable-line input, .editable-line textarea {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.88rem;
-      color: var(--ink);
-      border: none;
-      border-bottom: 1px dashed var(--linen);
-      background: transparent;
-      width: 100%;
-      padding: 3px 2px;
-      outline: none;
-      resize: none;
-    }
-    .editable-line input:focus,
-    .editable-line textarea:focus { border-bottom-color: var(--rose); }
-    .editable-line input::placeholder,
-    .editable-line textarea::placeholder { color: #cbb8b3; }
-
-    /* ── Items table ── */
-    .table-wrap { margin-bottom: 28px; overflow-x: auto; }
-
+    /* ── Desktop table ── */
+    .table-wrap { margin-bottom: 12px; overflow-x: auto; }
     table { width: 100%; border-collapse: collapse; }
     thead tr { border-bottom: 1.5px solid var(--rose); }
     th {
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
+      font-size: 0.63rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--rose);
-      padding: 8px 10px;
+      padding: 8px 6px;
       font-weight: 500;
       text-align: left;
+      white-space: nowrap;
     }
-    th:last-child, th:nth-child(3), th:nth-child(4) { text-align: right; }
-
-    tbody tr { border-bottom: 1px solid var(--linen); transition: background 0.15s; }
+    th.r, td.r { text-align: right; }
+    tbody tr { border-bottom: 1px solid var(--linen); }
     tbody tr:hover { background: var(--cream); }
-
-    td { padding: 10px 10px; vertical-align: middle; }
+    td { padding: 8px 6px; vertical-align: middle; }
     td input {
       font-family: 'Jost', sans-serif;
-      font-size: 0.87rem;
+      font-size: 0.84rem;
       color: var(--ink);
       border: none;
       background: transparent;
@@ -243,81 +232,136 @@
       width: 100%;
       padding: 2px 0;
     }
+    td.r input { text-align: right; }
     td input:focus { border-bottom: 1px solid var(--rose); }
     td input::placeholder { color: #d0bfba; }
-    td.num { text-align: right; }
-    td.num input { text-align: right; }
-    .row-total { font-size: 0.87rem; color: var(--bark); font-weight: 500; text-align: right; }
+    .row-total { font-size: 0.84rem; color: var(--bark); font-weight: 500; white-space: nowrap; }
 
     .remove-row {
       background: none; border: none; cursor: pointer;
-      color: #d4b5b0; font-size: 1rem; padding: 0 4px;
+      color: #d4b5b0; font-size: 0.9rem; padding: 0 2px;
       transition: color 0.15s;
     }
     .remove-row:hover { color: var(--rose); }
 
+    /* ── Mobile item cards ── */
+    .mobile-items { display: none; }
+    .item-card {
+      background: var(--cream);
+      border: 1px solid var(--linen);
+      border-radius: 6px;
+      padding: 14px 14px 12px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .item-card .remove-row {
+      position: absolute;
+      top: 12px; right: 12px;
+      font-size: 1rem;
+    }
+    .item-field { margin-bottom: 9px; }
+    .item-field label {
+      display: block;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 3px;
+    }
+    .item-field input {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      color: var(--ink);
+      border: none;
+      border-bottom: 1px dashed var(--linen);
+      background: transparent;
+      width: 100%;
+      padding: 4px 2px;
+      outline: none;
+    }
+    .item-field input:focus { border-bottom-color: var(--rose); }
+    .item-field input::placeholder { color: #cbb8b3; }
+    .item-row-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+    .item-card-total {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid var(--linen);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .item-card-total .lbl {
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rose);
+    }
+    .item-card-total .amt {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--bark);
+    }
+
+    /* ── Add row ── */
     .add-row-btn {
-      background: none; border: 1.5px dashed var(--linen);
-      color: var(--rose); font-family: 'Jost', sans-serif;
-      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 8px 18px; border-radius: 3px; cursor: pointer;
-      margin-top: 10px; transition: all 0.18s;
+      background: none;
+      border: 1.5px dashed var(--linen);
+      color: var(--rose);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 9px 18px;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: all 0.18s;
+      width: 100%;
     }
     .add-row-btn:hover { border-color: var(--rose); background: var(--blush); }
 
     /* ── Totals ── */
-    .totals-row {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 8px;
-    }
+    .totals-row { display: flex; justify-content: flex-end; margin-top: 20px; }
     .totals-box {
-      width: 280px;
+      width: 100%;
+      max-width: 300px;
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 6px 20px;
+      gap: 7px 16px;
+      align-items: center;
     }
     .totals-key {
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: #a08078;
-      display: flex; align-items: center;
     }
-    .totals-val {
-      font-size: 0.9rem;
-      color: var(--bark);
-      text-align: right;
-    }
+    .totals-val { font-size: 0.88rem; color: var(--bark); text-align: right; }
     .totals-val input {
       font-family: 'Jost', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--bark);
       border: none;
       border-bottom: 1px dashed var(--linen);
       background: transparent;
       outline: none;
-      width: 70px;
+      width: 80px;
       text-align: right;
       padding: 1px 0;
     }
     .totals-val input:focus { border-bottom-color: var(--rose); }
-
-    .grand-total-row .totals-key {
-      font-size: 0.85rem; font-weight: 500; color: var(--bark);
-    }
-    .grand-total-row .totals-val {
-      font-size: 1.1rem; font-weight: 500; color: var(--bark);
-    }
-    .totals-divider {
-      grid-column: 1 / -1;
-      height: 1px; background: var(--linen); margin: 4px 0;
-    }
+    .totals-divider { grid-column: 1/-1; height: 1px; background: var(--linen); margin: 2px 0; }
+    .grand-key { font-size: 0.82rem; font-weight: 500; color: var(--bark); }
+    .grand-val { font-size: 1.1rem; font-weight: 600; color: var(--bark); text-align: right; }
 
     /* ── Notes ── */
-    .notes-section { margin-top: 36px; }
+    .notes-section { margin-top: 28px; }
     .notes-label {
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--rose);
@@ -333,8 +377,8 @@
       border-radius: 4px;
       background: var(--cream);
       width: 100%;
-      min-height: 80px;
-      padding: 12px 14px;
+      min-height: 72px;
+      padding: 10px 12px;
       outline: none;
       resize: vertical;
       line-height: 1.6;
@@ -346,21 +390,38 @@
     .card-footer {
       background: var(--blush);
       border-top: 1.5px solid var(--linen);
-      padding: 22px 48px;
+      padding: 20px 24px;
       text-align: center;
     }
     .footer-thank {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-style: italic;
       color: var(--rose);
     }
     .footer-tagline {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: #b89f99;
       margin-top: 4px;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 600px) {
+      .page { margin: 10px auto 40px; padding: 0 8px; }
+      .card-header { padding: 22px 16px 18px; flex-direction: column; }
+      .brand-name { font-size: 1.35rem; }
+      .invoice-meta { text-align: left; width: 100%; }
+      .invoice-label { font-size: 1.6rem; }
+      .meta-grid { grid-template-columns: auto 1fr; }
+      .meta-key { text-align: left; }
+      .meta-val input { text-align: left; width: 100%; }
+      .card-body { padding: 16px; }
+      .parties { grid-template-columns: 1fr; gap: 18px; }
+      .table-wrap { display: none; }
+      .mobile-items { display: block; }
+      .totals-box { max-width: 100%; }
     }
 
     /* ── Print ── */
@@ -372,69 +433,61 @@
       .card { box-shadow: none; border-radius: 0; }
       input, textarea { border-bottom-color: transparent !important; }
       textarea.notes-input { border-color: transparent; background: transparent; }
-      .card-header { background: #f2e4df !important; }
+      .card-header { background: #f2e4df !important; padding: 28px 32px 22px !important; }
       .card-footer { background: #f2e4df !important; }
+      .card-body { padding: 24px 32px !important; }
       .brand-icon { background: #c9a49a !important; }
-      .card-header::before { background: linear-gradient(90deg, #c9a49a, #c4a882, #c9a49a) !important; }
+      .card-header::before { background: linear-gradient(90deg,#c9a49a,#c4a882,#c9a49a) !important; }
+      .mobile-items { display: none !important; }
+      .table-wrap { display: block !important; }
     }
   </style>
 </head>
 <body>
 
-<!-- Top Bar -->
 <div class="topbar">
-  <span class="topbar-title">✦ Invoice Generator</span>
+  <span class="topbar-title">✦ Akorfa Stitch Co.</span>
   <div class="topbar-actions">
-    <button class="btn btn-ghost" onclick="clearForm()">Clear Form</button>
-    <button class="btn btn-primary" onclick="window.print()">🖨 Save / Print PDF</button>
+    <button class="btn btn-ghost" onclick="clearForm()">🗑 Clear</button>
+    <button class="btn btn-primary" onclick="window.print()">🖨 Save PDF</button>
   </div>
 </div>
 
-<!-- Page -->
 <div class="page">
   <div class="card">
 
-    <!-- Header -->
     <div class="card-header">
       <div class="brand">
         <div class="brand-icon">🧵</div>
         <div>
-          <div class="brand-name" id="brand-name-display">Akorfa Stitch Co.</div>
+          <div class="brand-name">Akorfa Stitch Co.</div>
           <div class="brand-tagline">Bespoke Sewing &amp; Alterations</div>
         </div>
       </div>
-
       <div class="invoice-meta">
         <div class="invoice-label">Invoice</div>
         <div class="meta-grid">
           <span class="meta-key">Invoice #</span>
           <span class="meta-val"><input type="text" id="inv-number" placeholder="0001" /></span>
-
           <span class="meta-key">Date</span>
           <span class="meta-val"><input type="date" id="inv-date" /></span>
-
           <span class="meta-key">Due Date</span>
           <span class="meta-val"><input type="date" id="inv-due" /></span>
         </div>
       </div>
     </div>
 
-    <!-- Body -->
     <div class="card-body">
 
-      <!-- Parties -->
       <div class="parties">
-        <!-- From -->
-        <div class="from-block">
+        <div>
           <div class="party-label">From</div>
-          <div class="editable-line"><input type="text" placeholder="Your Name" id="from-name" value="Akorfa (Akorfa Stitch Co.)" /></div>
-          <div class="editable-line"><input type="text" placeholder="Phone / WhatsApp" id="from-phone" value="0542519458" /></div>
-          <div class="editable-line"><input type="text" placeholder="Email" id="from-email" value="Akorfapriscilla77@gmail.com" /></div>
-          <div class="editable-line"><input type="text" placeholder="Location / City" id="from-location" value="Vivian Farm, Sakumono" /></div>
+          <div class="editable-line"><input type="text" id="from-name" value="Akorfa" /></div>
+          <div class="editable-line"><input type="text" id="from-phone" value="0542519458" /></div>
+          <div class="editable-line"><input type="text" id="from-email" value="Akorfapriscilla77@gmail.com" /></div>
+          <div class="editable-line"><input type="text" id="from-location" value="Vivian Farm, Sakumono" /></div>
         </div>
-
-        <!-- To -->
-        <div class="to-block">
+        <div>
           <div class="party-label">Bill To</div>
           <div class="editable-line"><input type="text" placeholder="Customer Name" id="to-name" /></div>
           <div class="editable-line"><input type="text" placeholder="Customer Phone" id="to-phone" /></div>
@@ -443,149 +496,196 @@
         </div>
       </div>
 
-      <!-- Items Table -->
+      <div class="section-label">Items</div>
+
+      <!-- Desktop Table -->
       <div class="table-wrap">
-        <table id="items-table">
+        <table>
           <thead>
             <tr>
-              <th style="width:38%">Description</th>
-              <th style="width:18%">Material / Fabric</th>
-              <th style="width:10%" class="num">Qty</th>
-              <th style="width:15%" class="num">Unit Price</th>
-              <th style="width:14%" class="num">Total</th>
-              <th style="width:5%"></th>
+              <th style="width:28%">Description</th>
+              <th style="width:16%">Material / Fabric</th>
+              <th style="width:8%" class="r">Qty</th>
+              <th style="width:13%" class="r">Unit Price</th>
+              <th style="width:13%" class="r">Subtotal</th>
+              <th style="width:15%" class="r">Other Charges</th>
+              <th style="width:4%"></th>
             </tr>
           </thead>
-          <tbody id="items-body">
-            <!-- rows added by JS -->
-          </tbody>
+          <tbody id="items-body"></tbody>
         </table>
       </div>
+
+      <!-- Mobile Cards -->
+      <div class="mobile-items" id="mobile-items-body"></div>
+
       <button class="add-row-btn" onclick="addRow()">+ Add Item</button>
 
       <!-- Totals -->
       <div class="totals-row">
         <div class="totals-box">
-          <span class="totals-key">Subtotal</span>
+          <span class="totals-key">Items Subtotal</span>
           <span class="totals-val" id="subtotal-display">GHS 0.00</span>
 
+          <span class="totals-key">Other Charges</span>
+          <span class="totals-val" id="other-display">GHS 0.00</span>
+
           <span class="totals-key">Discount (GHS)</span>
-          <span class="totals-val">
-            <input type="number" id="discount" placeholder="0" min="0" oninput="recalc()" />
-          </span>
+          <span class="totals-val"><input type="number" id="discount" placeholder="0" min="0" oninput="recalc()" /></span>
 
           <span class="totals-key">Deposit Paid</span>
-          <span class="totals-val">
-            <input type="number" id="deposit" placeholder="0" min="0" oninput="recalc()" />
-          </span>
+          <span class="totals-val"><input type="number" id="deposit" placeholder="0" min="0" oninput="recalc()" /></span>
 
           <div class="totals-divider"></div>
-
-          <span class="totals-key grand-total-row">Balance Due</span>
-          <span class="totals-val grand-total-row" id="balance-display" style="font-size:1.15rem;font-weight:600;color:var(--bark)">GHS 0.00</span>
+          <span class="totals-key grand-key">Balance Due</span>
+          <span class="grand-val" id="balance-display">GHS 0.00</span>
         </div>
       </div>
 
-      <!-- Notes -->
       <div class="notes-section">
         <div class="notes-label">Notes &amp; Payment Info</div>
-        <textarea class="notes-input" id="notes" placeholder="e.g. Payment via MoMo: 024 XXX XXXX · Thank you for your patronage 🌸"></textarea>
+        <textarea class="notes-input" id="notes" placeholder="e.g. Payment via MoMo: 0542519458 · Thank you for your patronage 🌸"></textarea>
       </div>
 
-    </div><!-- /card-body -->
+    </div>
 
-    <!-- Footer -->
     <div class="card-footer">
       <div class="footer-thank">Thank you for choosing us ✦</div>
       <div class="footer-tagline">Crafted with care · Every stitch matters</div>
     </div>
 
-  </div><!-- /card -->
-</div><!-- /page -->
+  </div>
+</div>
 
 <script>
-  // Set today's date as default
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('inv-date').value = today;
-
-  // Auto invoice number
-  const stored = localStorage.getItem('sg_inv_num');
-  const nextNum = stored ? String(parseInt(stored) + 1).padStart(4, '0') : '0001';
-  document.getElementById('inv-number').value = nextNum;
+  document.getElementById('inv-date').value = new Date().toISOString().split('T')[0];
+  const stored = localStorage.getItem('as_inv_num');
+  document.getElementById('inv-number').value = stored ? String(parseInt(stored)+1).padStart(4,'0') : '0001';
 
   let rowCount = 0;
 
-  function addRow(desc='', material='', qty='', price='') {
+  function addRow(desc='', material='', other='', qty='', price='') {
     rowCount++;
     const id = rowCount;
+
+    // Desktop row
     const tbody = document.getElementById('items-body');
     const tr = document.createElement('tr');
     tr.id = 'row-' + id;
     tr.innerHTML = `
-      <td><input type="text" placeholder="e.g. Wedding dress sewing" value="${desc}" oninput="recalc()" /></td>
+      <td><input type="text" placeholder="e.g. Wedding dress sewing" value="${desc}" /></td>
       <td><input type="text" placeholder="e.g. Lace / Ankara" value="${material}" /></td>
-      <td class="num"><input type="number" placeholder="1" value="${qty}" min="0" oninput="recalc()" style="width:60px" /></td>
-      <td class="num"><input type="number" placeholder="0.00" value="${price}" min="0" step="0.01" oninput="recalc()" style="width:90px" /></td>
-      <td class="num row-total" id="rt-${id}">GHS 0.00</td>
-      <td><button class="remove-row" onclick="removeRow(${id})" title="Remove">✕</button></td>
+      <td class="r"><input type="number" placeholder="1" value="${qty}" min="0" oninput="recalc()" style="width:45px" /></td>
+      <td class="r"><input type="number" placeholder="0.00" value="${price}" min="0" step="0.01" oninput="recalc()" style="width:75px" /></td>
+      <td class="row-total r" id="rt-${id}">GHS 0.00</td>
+      <td class="r"><input type="number" placeholder="0.00" value="${other}" min="0" step="0.01" oninput="recalc()" style="width:75px" /></td>
+      <td><button class="remove-row" onclick="removeRow(${id})">✕</button></td>
     `;
     tbody.appendChild(tr);
+
+    // Mobile card
+    const mBody = document.getElementById('mobile-items-body');
+    const card = document.createElement('div');
+    card.className = 'item-card';
+    card.id = 'mrow-' + id;
+    card.innerHTML = `
+      <button class="remove-row" onclick="removeRow(${id})">✕</button>
+      <div class="item-field">
+        <label>Description</label>
+        <input type="text" placeholder="e.g. Wedding dress sewing" value="${desc}"
+          oninput="syncDesktop(${id},0,this.value)" />
+      </div>
+      <div class="item-field">
+        <label>Material / Fabric</label>
+        <input type="text" placeholder="e.g. Lace / Ankara" value="${material}"
+          oninput="syncDesktop(${id},1,this.value)" />
+      </div>
+      <div class="item-row-grid">
+        <div class="item-field">
+          <label>Qty</label>
+          <input type="number" placeholder="1" value="${qty}" min="0"
+            oninput="syncDesktop(${id},2,this.value); recalc()" />
+        </div>
+        <div class="item-field">
+          <label>Unit Price</label>
+          <input type="number" placeholder="0.00" value="${price}" min="0" step="0.01"
+            oninput="syncDesktop(${id},3,this.value); recalc()" />
+        </div>
+        <div class="item-field">
+          <label>Other Charges</label>
+          <input type="number" placeholder="0.00" value="${other}" min="0" step="0.01"
+            oninput="syncDesktop(${id},4,this.value); recalc()" />
+        </div>
+      </div>
+      <div class="item-card-total">
+        <span class="lbl">Subtotal</span>
+        <span class="amt" id="mrt-${id}">GHS 0.00</span>
+      </div>
+    `;
+    mBody.appendChild(card);
     recalc();
   }
 
-  function removeRow(id) {
+  function syncDesktop(id, col, val) {
     const row = document.getElementById('row-' + id);
-    if (row) row.remove();
+    if (!row) return;
+    const inputs = row.querySelectorAll('input');
+    if (inputs[col]) inputs[col].value = val;
+  }
+
+  function removeRow(id) {
+    ['row-', 'mrow-'].forEach(p => {
+      const el = document.getElementById(p + id);
+      if (el) el.remove();
+    });
     recalc();
   }
 
   function recalc() {
-    let subtotal = 0;
-    const rows = document.querySelectorAll('#items-body tr');
-    rows.forEach(tr => {
-      const inputs = tr.querySelectorAll('input[type=number]');
-      const qty   = parseFloat(inputs[0]?.value) || 0;
-      const price = parseFloat(inputs[1]?.value) || 0;
-      const rowTotal = qty * price;
-      subtotal += rowTotal;
-      const rtId = tr.id.replace('row-', 'rt-');
-      const rtEl = document.getElementById(rtId);
-      if (rtEl) rtEl.textContent = 'GHS ' + rowTotal.toFixed(2);
+    let subtotal = 0, otherTotal = 0;
+    document.querySelectorAll('#items-body tr').forEach(tr => {
+      const nums = tr.querySelectorAll('input[type=number]');
+      const qty   = parseFloat(nums[0]?.value) || 0;
+      const price = parseFloat(nums[1]?.value) || 0;
+      const other = parseFloat(nums[2]?.value) || 0;
+      const rowSub = qty * price;
+      subtotal   += rowSub;
+      otherTotal += other;
+      const id = tr.id.replace('row-', '');
+      const rt  = document.getElementById('rt-'  + id);
+      const mrt = document.getElementById('mrt-' + id);
+      if (rt)  rt.textContent  = 'GHS ' + rowSub.toFixed(2);
+      if (mrt) mrt.textContent = 'GHS ' + (rowSub + other).toFixed(2);
     });
 
-    const discount = parseFloat(document.getElementById('discount').value) || 0;
-    const deposit  = parseFloat(document.getElementById('deposit').value)  || 0;
-    const balance  = Math.max(0, subtotal - discount - deposit);
+    const discount  = parseFloat(document.getElementById('discount').value) || 0;
+    const deposit   = parseFloat(document.getElementById('deposit').value)  || 0;
+    const grandTotal = subtotal + otherTotal;
+    const balance   = Math.max(0, grandTotal - discount - deposit);
 
     document.getElementById('subtotal-display').textContent = 'GHS ' + subtotal.toFixed(2);
+    document.getElementById('other-display').textContent    = 'GHS ' + otherTotal.toFixed(2);
     document.getElementById('balance-display').textContent  = 'GHS ' + balance.toFixed(2);
   }
 
   function clearForm() {
     if (!confirm('Clear all fields and start a fresh invoice?')) return;
-    // Save & bump invoice number
     const num = document.getElementById('inv-number').value;
-    localStorage.setItem('sg_inv_num', parseInt(num) || 0);
-    // Clear items
+    localStorage.setItem('as_inv_num', parseInt(num) || 0);
     document.getElementById('items-body').innerHTML = '';
+    document.getElementById('mobile-items-body').innerHTML = '';
     rowCount = 0;
-    // Reset meta
-    document.getElementById('inv-number').value = String((parseInt(num)||0) + 1).padStart(4,'0');
+    document.getElementById('inv-number').value = String((parseInt(num)||0)+1).padStart(4,'0');
     document.getElementById('inv-date').value = new Date().toISOString().split('T')[0];
     document.getElementById('inv-due').value = '';
-    // Clear party fields
-    ['from-name','from-phone','from-email','from-location',
-     'to-name','to-phone','to-email','to-address'].forEach(id => {
-      document.getElementById(id).value = '';
-    });
+    ['to-name','to-phone','to-email','to-address'].forEach(id => document.getElementById(id).value = '');
     document.getElementById('discount').value = '';
     document.getElementById('deposit').value  = '';
     document.getElementById('notes').value    = '';
     recalc();
-    addRow();
+    addRow(); addRow(); addRow();
   }
 
-  // Init with 3 blank rows
   addRow(); addRow(); addRow();
 </script>
 </body>
